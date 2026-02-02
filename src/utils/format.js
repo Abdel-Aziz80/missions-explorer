@@ -1,14 +1,9 @@
-export function clip(text, n = 120) {
+export function clip(text, max = 90) {
   if (!text) return "";
-  return text.length > n ? text.slice(0, n - 1) + "…" : text;
+  return text.length > max ? text.slice(0, max) + "…" : text;
 }
 
-// Génère des tags “stack” fictifs mais crédibles
 export function tagsForPost(post) {
-  const pool = ["react", "next.js", "node.js", "express", "postgres", "api", "seo", "ui", "auth"];
-  const id = post?.id ?? 1;
-  const t1 = pool[id % pool.length];
-  const t2 = pool[(id + 3) % pool.length];
-  const t3 = pool[(id + 6) % pool.length];
-  return Array.from(new Set([t1, t2, t3]));
+  if (!post?.tags) return [];
+  return post.tags.map(t => t.toLowerCase());
 }

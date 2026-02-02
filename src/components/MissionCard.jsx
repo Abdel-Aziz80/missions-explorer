@@ -10,7 +10,7 @@ export default function MissionCard({ post, onOpen }) {
       type="button"
     >
       <h3 style={{ margin: "0 0 8px" }}>{post.title}</h3>
-      <p style={{ margin: 0, opacity: 0.85 }}>{clip(post.body)}</p>
+      <p style={{ margin: 0, opacity: 0.85 }}>{clip(post.description)}</p>
 
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 12 }}>
         {tags.map((t) => (

@@ -24,9 +24,9 @@ export default function Home() {
       setLoading(true);
       setErr("");
       try {
-        const data = await apiGet("/posts?limit=30");
+        const data = await apiGet("/api/missions");
         if (!alive) return;
-        setPosts(data.posts ?? []);
+        setPosts(data.missions ?? []);
       } catch (e) {
         if (!alive) return;
         setErr(e.message || "Erreur inconnue");
@@ -54,7 +54,7 @@ export default function Home() {
   const s = q.trim().toLowerCase();
   list = list.filter((p) => {
     const inTitle = p.title.toLowerCase().includes(s);
-    const inBody = p.body.toLowerCase().includes(s);
+    const inBody = p.description.toLowerCase().includes(s);
     const inTags = tagsForPost(p).some((t) => t.toLowerCase().includes(s));
 
     return inTitle || inBody || inTags;

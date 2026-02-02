@@ -1,10 +1,9 @@
-export async function apiGet(path) {
-  const url = `https://dummyjson.com${path}`;
-  const res = await fetch(url);
+const API_URL = import.meta.env.VITE_API_URL;
 
+export async function apiGet(path) {
+  const res = await fetch(`${API_URL}${path}`);
   if (!res.ok) {
-    const msg = `API error ${res.status}`;
-    throw new Error(msg);
+    throw new Error("Failed to fetch");
   }
   return res.json();
 }

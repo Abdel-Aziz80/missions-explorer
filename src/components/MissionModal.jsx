@@ -13,7 +13,7 @@ export default function MissionModal({ mission, onClose }) {
           <button onClick={onClose} style={closeBtn} type="button">✕</button>
         </div>
 
-        <p style={{ opacity: 0.9 }}>{mission.body}</p>
+        <p style={{ opacity: 0.9 }}>{mission.description}</p>
 
         <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
           {tags.map((t) => <span key={t} style={pill}>{t}</span>)}
